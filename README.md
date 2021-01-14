@@ -1,2 +1,3 @@
-# quarkus-wildfly-client-extension
-Quarkus extension to connect to a WildFly management endpoint
+# Quarkus Extension for WildFly Client
+
+Quarkus extension to connect to a WildFly management endpoint.
