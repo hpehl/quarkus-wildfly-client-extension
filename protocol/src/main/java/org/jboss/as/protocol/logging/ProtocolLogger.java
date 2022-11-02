@@ -1,25 +1,18 @@
 /*
- * JBoss, Home of Professional Open Source.
- * Copyright 2011, Red Hat, Inc., and individual contributors
- * as indicated by the @author tags. See the copyright.txt file in the
- * distribution for a full listing of individual contributors.
+ *  Copyright 2022 Red Hat
  *
- * This is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2.1 of
- * the License, or (at your option) any later version.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this software; if not, write to the Free
- * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
-
 package org.jboss.as.protocol.logging;
 
 import java.io.IOException;
@@ -52,10 +45,10 @@ public interface ProtocolLogger extends BasicLogger {
      */
     ProtocolLogger ROOT_LOGGER = Logger.getMessageLogger(ProtocolLogger.class, "org.jboss.as.protocol");
 
-    //    /**
-    //     * A logger with the category {@code org.jboss.as.protocol.client}.
-    //     */
-    //    ProtocolLogger CLIENT_LOGGER = Logger.getMessageLogger(ProtocolLogger.class, "org.jboss.as.protocol.client");
+    // /**
+    // * A logger with the category {@code org.jboss.as.protocol.client}.
+    // */
+    // ProtocolLogger CLIENT_LOGGER = Logger.getMessageLogger(ProtocolLogger.class, "org.jboss.as.protocol.client");
 
     /**
      * A logger with the category {@code org.jboss.as.protocol.connection}.
@@ -72,15 +65,14 @@ public interface ProtocolLogger extends BasicLogger {
     @Message(id = 1, value = "Got error closing channel %s")
     void errorClosingChannel(String message);
 
-
-    //    @LogMessage(level = ERROR)
-    //    @Message(id = 2, value = "Failed to accept a connection")
-    //    void failedToAcceptConnection(@Cause Throwable cause);
+    // @LogMessage(level = ERROR)
+    // @Message(id = 2, value = "Failed to accept a connection")
+    // void failedToAcceptConnection(@Cause Throwable cause);
 
     /**
      * Logs an error message indicating a failure to close the resource.
      *
-     * @param cause    the cause of the error.
+     * @param cause the cause of the error.
      * @param resource the resource.
      */
     @LogMessage(level = ERROR)
@@ -90,80 +82,80 @@ public interface ProtocolLogger extends BasicLogger {
     /**
      * Logs an error message indicating a failure to close the server socket.
      *
-     * @param cause  the cause of the error.
+     * @param cause the cause of the error.
      * @param socket the server socket.
      */
     @LogMessage(level = ERROR)
     @Message(id = 4, value = "Failed to close the server socket %s")
     void failedToCloseServerSocket(@Cause Throwable cause, ServerSocket socket);
 
-    //    @LogMessage(level = ERROR)
-    //    @Message(id = 5, value = "Failed to close a socket")
-    //    void failedToCloseSocket(@Cause Throwable cause);
+    // @LogMessage(level = ERROR)
+    // @Message(id = 5, value = "Failed to close a socket")
+    // void failedToCloseSocket(@Cause Throwable cause);
 
-    //    @LogMessage(level = ERROR)
-    //    @Message(id = 6, value = "Failed to finish the marshaller %s")
-    //    void failedToFinishMarshaller(@Cause Throwable cause, Marshaller marshaller);
+    // @LogMessage(level = ERROR)
+    // @Message(id = 6, value = "Failed to finish the marshaller %s")
+    // void failedToFinishMarshaller(@Cause Throwable cause, Marshaller marshaller);
 
-    //    @LogMessage(level = ERROR)
-    //    @Message(id = 7, value = "Failed to finish the unmarshaller %s")
-    //    void failedToFinishUnmarshaller(@Cause Throwable cause, Unmarshaller unmarshaller);
+    // @LogMessage(level = ERROR)
+    // @Message(id = 7, value = "Failed to finish the unmarshaller %s")
+    // void failedToFinishUnmarshaller(@Cause Throwable cause, Unmarshaller unmarshaller);
 
-    //    @LogMessage(level = ERROR)
-    //    @Message(id = 8, value = "Failed to handle incoming connection")
-    //    void failedToHandleIncomingConnection(@Cause Throwable cause);
+    // @LogMessage(level = ERROR)
+    // @Message(id = 8, value = "Failed to handle incoming connection")
+    // void failedToHandleIncomingConnection(@Cause Throwable cause);
 
-    //    @LogMessage(level = ERROR)
-    //    @Message(id = 9, value = "Failed to handle socket failure condition")
-    //    void failedToHandleSocketFailure(@Cause Throwable cause);
+    // @LogMessage(level = ERROR)
+    // @Message(id = 9, value = "Failed to handle socket failure condition")
+    // void failedToHandleSocketFailure(@Cause Throwable cause);
 
-    //    @LogMessage(level = ERROR)
-    //    @Message(id = 10, value = "Failed to handle socket finished condition")
-    //    void failedToHandleSocketFinished(@Cause Throwable cause);
+    // @LogMessage(level = ERROR)
+    // @Message(id = 10, value = "Failed to handle socket finished condition")
+    // void failedToHandleSocketFinished(@Cause Throwable cause);
 
-    //    @LogMessage(level = ERROR)
-    //    @Message(id = 11, value = "Failed to handle socket shut down condition")
-    //    void failedToHandleSocketShutdown(@Cause Throwable cause);
+    // @LogMessage(level = ERROR)
+    // @Message(id = 11, value = "Failed to handle socket shut down condition")
+    // void failedToHandleSocketShutdown(@Cause Throwable cause);
 
-    //    @LogMessage(level = ERROR)
-    //    @Message(id = 12, value = "Failed to read a message")
-    //    void failedToReadMessage(@Cause Throwable cause);
+    // @LogMessage(level = ERROR)
+    // @Message(id = 12, value = "Failed to read a message")
+    // void failedToReadMessage(@Cause Throwable cause);
 
-    //    @LogMessage(level = WARN)
-    //    @Message(id = 13, value = "Leaked a message output stream; cleaning")
-    //    void leakedMessageOutputStream();
+    // @LogMessage(level = WARN)
+    // @Message(id = 13, value = "Leaked a message output stream; cleaning")
+    // void leakedMessageOutputStream();
 
-    //    @LogMessage(level = WARN)
-    //    @Message(id = 14, value = "Received end for wrong channel!")
-    //    void receivedWrongChannel();
+    // @LogMessage(level = WARN)
+    // @Message(id = 14, value = "Received end for wrong channel!")
+    // void receivedWrongChannel();
 
-    //    @LogMessage(level = WARN)
-    //    @Message(id = 15, value = "Executor is not needed for client")
-    //    void executorNotNeeded();
+    // @LogMessage(level = WARN)
+    // @Message(id = 15, value = "Executor is not needed for client")
+    // void executorNotNeeded();
 
-    //    @LogMessage(level = WARN)
-    //    @Message(id = 16, value = "Connection timeout is no longer needed for client")
-    //    void connectTimeoutNotNeeded();
+    // @LogMessage(level = WARN)
+    // @Message(id = 16, value = "Connection timeout is no longer needed for client")
+    // void connectTimeoutNotNeeded();
     //
-    //    @LogMessage(level = WARN)
-    //    @Message(id = 17, value = "Connection timeout property is no longer needed for client")
-    //    void connectTimeoutPropertyNotNeeded();
+    // @LogMessage(level = WARN)
+    // @Message(id = 17, value = "Connection timeout property is no longer needed for client")
+    // void connectTimeoutPropertyNotNeeded();
 
     @LogMessage(level = WARN)
     @Message(id = 18, value = "No such request (%d) associated with channel %s")
     void noSuchRequest(int requestId, Channel channel);
 
-    //    @Message(id = 19, value = "Already connected")
-    //    IllegalStateException alreadyConnected();
+    // @Message(id = 19, value = "Already connected")
+    // IllegalStateException alreadyConnected();
 
-    //    @Message(id = 20, value = "Channel and receiver already started")
-    //    IllegalStateException alreadyStarted();
+    // @Message(id = 20, value = "Channel and receiver already started")
+    // IllegalStateException alreadyStarted();
 
-    //    @Message(id = 21, value = "Can't use both a connect timeout and a connect timeout property")
-    //    IllegalArgumentException cannotSpecifyMultipleTimeouts();
+    // @Message(id = 21, value = "Can't use both a connect timeout and a connect timeout property")
+    // IllegalArgumentException cannotSpecifyMultipleTimeouts();
 
-    //    @Message(id = 22, value = "Can't set uriScheme with specified endpoint")
-    //    IllegalArgumentException cannotSetUriScheme();
+    // @Message(id = 22, value = "Can't set uriScheme with specified endpoint")
+    // IllegalArgumentException cannotSetUriScheme();
 
     /**
      * Creates an exception indicating a connection could not be made.
@@ -174,36 +166,36 @@ public interface ProtocolLogger extends BasicLogger {
     @Message(id = 23, value = "Could not connect to %s. The connection timed out")
     ConnectException couldNotConnect(URI uri);
 
-    //    @Message(id = 24, value = "Connection was cancelled")
-    //    ConnectException connectWasCancelled();
+    // @Message(id = 24, value = "Connection was cancelled")
+    // ConnectException connectWasCancelled();
 
-    //    @Message(id = 25, value = "Failed to create server thread")
-    //    IOException failedToCreateServerThread();
+    // @Message(id = 25, value = "Failed to create server thread")
+    // IOException failedToCreateServerThread();
 
-    //    @Message(id = 26, value = "Failed to read object")
-    //    IOException failedToReadObject(@Cause Throwable cause);
+    // @Message(id = 26, value = "Failed to read object")
+    // IOException failedToReadObject(@Cause Throwable cause);
 
-    //    @Message(id = 27, value = "Failed to write management response headers")
-    //    IOException failedToWriteManagementResponseHeaders(@Cause Throwable cause);
+    // @Message(id = 27, value = "Failed to write management response headers")
+    // IOException failedToWriteManagementResponseHeaders(@Cause Throwable cause);
 
-    //    @Message(id = 28, value = "Invalid byte")
-    //    UTFDataFormatException invalidByte();
+    // @Message(id = 28, value = "Invalid byte")
+    // UTFDataFormatException invalidByte();
 
-    //    @Message(id = 29, value = "Invalid byte:%s(%d)")
-    //    UTFDataFormatException invalidByte(char c, int i);
+    // @Message(id = 29, value = "Invalid byte:%s(%d)")
+    // UTFDataFormatException invalidByte(char c, int i);
 
     /**
      * Creates an exception indicating an invalid byte token was found.
      *
      * @param expected the expected value.
-     * @param actual   the actual value.
+     * @param actual the actual value.
      * @return an {@link java.io.IOException} for the error.
      */
     @Message(id = 30, value = "Invalid byte token.  Expecting '%d' received '%d'")
     IOException invalidByteToken(int expected, byte actual);
 
-    //    @Message(id = 31, value = "Invalid command byte read: %s")
-    //    IOException invalidCommandByte(int commandByte);
+    // @Message(id = 31, value = "Invalid command byte read: %s")
+    // IOException invalidCommandByte(int commandByte);
 
     /**
      * Creates an exception indicating the signature is invalid.
@@ -214,8 +206,8 @@ public interface ProtocolLogger extends BasicLogger {
     @Message(id = 32, value = "Invalid signature [%s]")
     IOException invalidSignature(String signature);
 
-    //    @Message(id = 33, value = "Invalid start chunk start [%s]")
-    //    IOException invalidStartChunk(int chunk);
+    // @Message(id = 33, value = "Invalid start chunk start [%s]")
+    // IOException invalidStartChunk(int chunk);
 
     /**
      * Creates an exception indicating the type is invalid.
@@ -229,8 +221,8 @@ public interface ProtocolLogger extends BasicLogger {
     /**
      * Creates an exception indicating the provided type was invalid.
      *
-     * @param validType1   the first valid type.
-     * @param validType2   the second valid type.
+     * @param validType1 the first valid type.
+     * @param validType2 the second valid type.
      * @param providedType the type provided.
      * @return an {@link IllegalArgumentException} for the error.
      */
@@ -240,46 +232,46 @@ public interface ProtocolLogger extends BasicLogger {
     // @Message(id = 36, value = "Only '%s' is a valid url")
     // IllegalArgumentException invalidUrl(String url);
 
-    //    @Message(id = 37, value = "No operation handler set")
-    //    IOException operationHandlerNotSet();
+    // @Message(id = 37, value = "No operation handler set")
+    // IOException operationHandlerNotSet();
 
-    //    @Message(id = 38, value = "Not connected")
-    //    IllegalStateException notConnected();
+    // @Message(id = 38, value = "Not connected")
+    // IllegalStateException notConnected();
 
     // id = 39; redundant parameter null check message
 
-    //    @Message(id = 40, value = "%s and %s are null")
-    //    IllegalArgumentException nullParameters(String parameterName1, String parameterName2);
+    // @Message(id = 40, value = "%s and %s are null")
+    // IllegalArgumentException nullParameters(String parameterName1, String parameterName2);
 
-    //    @Message(id = 41, value = "Read %d bytes.")
-    //    EOFException readBytes(int bytesRead);
+    // @Message(id = 41, value = "Read %d bytes.")
+    // EOFException readBytes(int bytesRead);
 
-    //    @Message(id = 42, value = "No request handler found with id %s in operation handler %s")
-    //    IOException requestHandlerIdNotFound(byte id, AbstractMessageHandler operationHandler);
+    // @Message(id = 42, value = "No request handler found with id %s in operation handler %s")
+    // IOException requestHandlerIdNotFound(byte id, AbstractMessageHandler operationHandler);
 
-    //    @Message(id = 43, value = "Response handler already registered for request")
-    //    IOException responseHandlerAlreadyRegistered();
+    // @Message(id = 43, value = "Response handler already registered for request")
+    // IOException responseHandlerAlreadyRegistered();
 
-    //    @Message(id = 44, value = "A problem happened executing on the server: %s")
-    //    IOException serverError(String errorMessage);
+    // @Message(id = 44, value = "A problem happened executing on the server: %s")
+    // IOException serverError(String errorMessage);
 
-    //    @Message(id = 45, value = "Stream closed")
-    //    IOException streamClosed();
+    // @Message(id = 45, value = "Stream closed")
+    // IOException streamClosed();
 
-    //    @Message(id = 46, value = "Thread creation was refused")
-    //    IllegalStateException threadCreationRefused();
+    // @Message(id = 46, value = "Thread creation was refused")
+    // IllegalStateException threadCreationRefused();
 
-    //    @Message(id = 47, value = "Unexpected end of stream")
-    //    EOFException unexpectedEndOfStream();
+    // @Message(id = 47, value = "Unexpected end of stream")
+    // EOFException unexpectedEndOfStream();
 
-    //    @Message(id = 48, value = "Scheme %s does not match uri %s")
-    //    IllegalArgumentException unmatchedScheme(String scheme, URI uri);
+    // @Message(id = 48, value = "Scheme %s does not match uri %s")
+    // IllegalArgumentException unmatchedScheme(String scheme, URI uri);
 
-    //    @Message(id = 49, value = "Write channel closed")
-    //    IOException writeChannelClosed();
+    // @Message(id = 49, value = "Write channel closed")
+    // IOException writeChannelClosed();
 
-    //    @Message(id = 50, value = "Writes are already shut down")
-    //    IOException writesAlreadyShutdown();
+    // @Message(id = 50, value = "Writes are already shut down")
+    // IOException writesAlreadyShutdown();
 
     /**
      * Creates an exception indicating that the operation id is already taken.
@@ -296,7 +288,7 @@ public interface ProtocolLogger extends BasicLogger {
     /**
      * Creates an exception indicating a connection could not be made.
      *
-     * @param uri   the URI attempted to connect.
+     * @param uri the URI attempted to connect.
      * @param cause the cause of the failure.
      * @return a {@link ConnectException} for the error.
      */

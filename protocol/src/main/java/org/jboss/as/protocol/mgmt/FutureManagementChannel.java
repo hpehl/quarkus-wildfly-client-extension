@@ -1,25 +1,18 @@
 /*
- * JBoss, Home of Professional Open Source.
- * Copyright 2012, Red Hat, Inc., and individual contributors
- * as indicated by the @author tags. See the copyright.txt file in the
- * distribution for a full listing of individual contributors.
+ *  Copyright 2022 Red Hat
  *
- * This is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2.1 of
- * the License, or (at your option) any later version.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this software; if not, write to the Free
- * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
-
 package org.jboss.as.protocol.mgmt;
 
 import java.io.IOException;
@@ -47,9 +40,7 @@ public abstract class FutureManagementChannel extends ManagementClientChannelStr
     private volatile State state = State.OPEN;
 
     public enum State {
-        OPEN,
-        CLOSING,
-        CLOSED,
+        OPEN, CLOSING, CLOSED,
         ;
     }
 
@@ -103,7 +94,7 @@ public abstract class FutureManagementChannel extends ManagementClientChannelStr
             return channel;
         }
         synchronized (lock) {
-            for (; ; ) {
+            for (;;) {
                 if (state == State.CLOSED) {
                     throw ProtocolLogger.ROOT_LOGGER.channelClosed();
                 }
@@ -124,8 +115,8 @@ public abstract class FutureManagementChannel extends ManagementClientChannelStr
     }
 
     /**
-     * Signal that we are about to close the channel. This will not have any affect on the underlying channel, however
-     * prevent setting a new channel.
+     * Signal that we are about to close the channel. This will not have any affect on the underlying channel, however prevent
+     * setting a new channel.
      *
      * @return whether the closing state was set successfully
      */
@@ -144,12 +135,12 @@ public abstract class FutureManagementChannel extends ManagementClientChannelStr
     /**
      * Open a channel.
      *
-     * @param connection  the connection
+     * @param connection the connection
      * @param serviceType the service type
-     * @param options     the channel options
+     * @param options the channel options
      * @return the opened channel
-     * @throws IOException if there is a remoting problem opening the channel or it cannot be opened in a reasonable
-     *                     amount of time
+     * @throws IOException if there is a remoting problem opening the channel or it cannot be opened in a reasonable amount of
+     *         time
      */
     protected Channel openChannel(final Connection connection, final String serviceType, final OptionMap options)
             throws IOException {
@@ -159,15 +150,15 @@ public abstract class FutureManagementChannel extends ManagementClientChannelStr
     /**
      * Open a channel.
      *
-     * @param connection  the connection
+     * @param connection the connection
      * @param serviceType the service type
-     * @param options     the channel options
-     * @param deadline    time, in ms since the epoch, by which the channel must be created, or {@code null} if the
-     *                    caller is not imposing a specific deadline. Ignored if less than 10s from the current time,
-     *                    with 10s used as the default if this is {@code null}
+     * @param options the channel options
+     * @param deadline time, in ms since the epoch, by which the channel must be created, or {@code null} if the caller is not
+     *        imposing a specific deadline. Ignored if less than 10s from the current time, with 10s used as the default if this
+     *        is {@code null}
      * @return the opened channel
-     * @throws IOException if there is a remoting problem opening the channel or it cannot be opened in a reasonable
-     *                     amount of time
+     * @throws IOException if there is a remoting problem opening the channel or it cannot be opened in a reasonable amount of
+     *         time
      */
     final Channel openChannel(final Connection connection, final String serviceType, final OptionMap options,
             final Long deadline) throws IOException {

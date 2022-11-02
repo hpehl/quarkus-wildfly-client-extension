@@ -1,25 +1,18 @@
 /*
- * JBoss, Home of Professional Open Source.
- * Copyright 2012, Red Hat, Inc., and individual contributors
- * as indicated by the @author tags. See the copyright.txt file in the
- * distribution for a full listing of individual contributors.
+ *  Copyright 2022 Red Hat
  *
- * This is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2.1 of
- * the License, or (at your option) any later version.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this software; if not, write to the Free
- * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
-
 package org.jboss.as.protocol;
 
 import java.io.IOException;
@@ -64,7 +57,9 @@ public final class ProtocolConnectionManager {
     public Connection connect() throws IOException {
         Connection connection;
         synchronized (this) {
-            if (shutdown) { throw ProtocolLogger.ROOT_LOGGER.channelClosed(); }
+            if (shutdown) {
+                throw ProtocolLogger.ROOT_LOGGER.channelClosed();
+            }
             connection = this.connection;
             if (connection == null) {
                 connection = connectTask.connect();
@@ -109,7 +104,9 @@ public final class ProtocolConnectionManager {
     public void shutdown() {
         final Connection connection;
         synchronized (this) {
-            if (shutdown) { return; }
+            if (shutdown) {
+                return;
+            }
             shutdown = true;
             connection = this.connection;
             if (connectTask != null) {
@@ -190,7 +187,7 @@ public final class ProtocolConnectionManager {
     /**
      * Create a new connection manager, based on an existing connection.
      *
-     * @param connection  the existing connection
+     * @param connection the existing connection
      * @param openHandler a connection open handler
      * @return the connected manager
      */
@@ -203,7 +200,7 @@ public final class ProtocolConnectionManager {
      * Create a new connection manager, which will try to connect using the protocol connection configuration.
      *
      * @param configuration the connection configuration
-     * @param openHandler   the connection open handler
+     * @param openHandler the connection open handler
      * @return the connection manager
      */
     public static ProtocolConnectionManager create(final ProtocolConnectionConfiguration configuration,
@@ -215,8 +212,8 @@ public final class ProtocolConnectionManager {
      * Create a new connection manager, which will try to connect using the protocol connection configuration.
      *
      * @param configuration the connection configuration
-     * @param openHandler   the connection open handler
-     * @param next          the next connect connectTask used once disconnected
+     * @param openHandler the connection open handler
+     * @param next the next connect connectTask used once disconnected
      * @return the connection manager
      */
     public static ProtocolConnectionManager create(final ProtocolConnectionConfiguration configuration,
@@ -307,8 +304,8 @@ public final class ProtocolConnectionManager {
     }
 
     /**
-     * A {@code ConnectTask} that can be returned from {@link ConnectTask#connectionClosed()} to terminate further
-     * attempts to connect.
+     * A {@code ConnectTask} that can be returned from {@link ConnectTask#connectionClosed()} to terminate further attempts to
+     * connect.
      */
     public static final ConnectTask DISCONNECTED = new ConnectTask() {
 

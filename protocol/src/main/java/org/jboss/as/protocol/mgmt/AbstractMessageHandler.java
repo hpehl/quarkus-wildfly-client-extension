@@ -1,25 +1,18 @@
 /*
- * JBoss, Home of Professional Open Source.
- * Copyright 2011, Red Hat, Inc., and individual contributors
- * as indicated by the @author tags. See the copyright.txt file in the
- * distribution for a full listing of individual contributors.
+ *  Copyright 2022 Red Hat
  *
- * This is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2.1 of
- * the License, or (at your option) any later version.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this software; if not, write to the Free
- * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
-
 package org.jboss.as.protocol.mgmt;
 
 import java.io.DataInput;
@@ -99,7 +92,6 @@ public abstract class AbstractMessageHandler
     private int activeCount = 0;
     private volatile boolean shutdown = false;
 
-
     protected AbstractMessageHandler(final ExecutorService executorService) {
         if (executorService == null) {
             throw ProtocolLogger.ROOT_LOGGER.nullExecutor();
@@ -113,7 +105,7 @@ public abstract class AbstractMessageHandler
      * This is used for the {@link ManagementClientChannelStrategy.Establishing} since it might use multiple channels.
      *
      * @param closed the closed resource
-     * @param e      the exception which occurred during close, if any
+     * @param e the exception which occurred during close, if any
      */
     public void handleChannelClosed(final Channel closed, final IOException e) {
         for (final ActiveOperationImpl<?, ?> activeOperation : activeRequests.values()) {
@@ -159,7 +151,7 @@ public abstract class AbstractMessageHandler
      * Await the completion of all currently active operations.
      *
      * @param timeout the timeout
-     * @param unit    the time unit
+     * @param unit the time unit
      * @return {@code } false if the timeout was reached and there were still active operations
      * @throws InterruptedException
      */
@@ -221,8 +213,8 @@ public abstract class AbstractMessageHandler
      * Handle a message.
      *
      * @param channel the channel
-     * @param input   the message
-     * @param header  the management protocol header
+     * @param input the message
+     * @param header the management protocol header
      * @throws IOException
      */
     @Override
@@ -290,9 +282,9 @@ public abstract class AbstractMessageHandler
     /**
      * Handle a message.
      *
-     * @param channel       the channel
-     * @param message       the message
-     * @param header        the protocol header
+     * @param channel the channel
+     * @param message the message
+     * @param header the protocol header
      * @param activeRequest the active request
      */
     protected <T, A> void handleRequest(final Channel channel, final DataInput message,
@@ -305,7 +297,7 @@ public abstract class AbstractMessageHandler
      *
      * @param channel the channel
      * @param message the message
-     * @param header  the protocol header
+     * @param header the protocol header
      * @param handler the request handler
      * @throws IOException
      */
@@ -323,7 +315,7 @@ public abstract class AbstractMessageHandler
      *
      * @param channel the channel
      * @param message the message
-     * @param header  the protocol header
+     * @param header the protocol header
      * @param support the request support
      * @param handler the request handler
      */
@@ -362,7 +354,7 @@ public abstract class AbstractMessageHandler
      * Register an active operation. The operation-id will be generated.
      *
      * @param attachment the shared attachment
-     * @param callback   the completed callback
+     * @param callback the completed callback
      * @return the active operation
      */
     protected <T, A> ActiveOperation<T, A> registerActiveOperation(A attachment,
@@ -373,7 +365,7 @@ public abstract class AbstractMessageHandler
     /**
      * Register an active operation with a specific operation id.
      *
-     * @param id         the operation id
+     * @param id the operation id
      * @param attachment the shared attachment
      * @return the created active operation
      * @throws java.lang.IllegalStateException if an operation with the same id is already registered
@@ -386,9 +378,9 @@ public abstract class AbstractMessageHandler
     /**
      * Register an active operation with a specific operation id.
      *
-     * @param id         the operation id
+     * @param id the operation id
      * @param attachment the shared attachment
-     * @param callback   the completed callback
+     * @param callback the completed callback
      * @return the created active operation
      * @throws java.lang.IllegalStateException if an operation with the same id is already registered
      */
@@ -400,7 +392,7 @@ public abstract class AbstractMessageHandler
             // TODO WFCORE-199 distinguish client uses from server uses and limit this check to server uses
             // Using id==null may be one way to do this, but we need to consider ops that involve multiple requests
             // TODO WFCORE-845 consider using an IllegalStateException for this
-            //assert ! shutdown;
+            // assert ! shutdown;
             final Integer operationId;
             if (id == null) {
                 // If we did not get an operationId, create a new one
@@ -501,8 +493,8 @@ public abstract class AbstractMessageHandler
      * Safe write error response.
      *
      * @param channel the channel
-     * @param header  the request header
-     * @param error   the exception
+     * @param header the request header
+     * @param error the exception
      */
     protected static void safeWriteErrorResponse(final Channel channel, final ManagementProtocolHeader header,
             final Throwable error) {
@@ -520,8 +512,8 @@ public abstract class AbstractMessageHandler
      * Write an error response.
      *
      * @param channel the channel
-     * @param header  the request
-     * @param error   the error
+     * @param header the request
+     * @param error the error
      * @throws IOException
      */
     protected static void writeErrorResponse(final Channel channel, final ManagementRequestHeader header,
@@ -540,7 +532,7 @@ public abstract class AbstractMessageHandler
      * Write the management protocol header.
      *
      * @param header the mgmt protocol header
-     * @param os     the output stream
+     * @param os the output stream
      * @throws IOException
      */
     protected static FlushableDataOutput writeHeader(final ManagementProtocolHeader header, final OutputStream os)

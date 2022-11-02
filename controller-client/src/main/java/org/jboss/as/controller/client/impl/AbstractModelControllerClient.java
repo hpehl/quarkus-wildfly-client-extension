@@ -1,20 +1,17 @@
 /*
- * JBoss, Home of Professional Open Source
- * Copyright 2011 Red Hat Inc. and/or its affiliates and other contributors
- * as indicated by the @authors tag. All rights reserved.
- * See the copyright.txt in the distribution for a
- * full listing of individual contributors.
+ *  Copyright 2022 Red Hat
  *
- * This copyrighted material is made available to anyone wishing to use,
- * modify, copy, or redistribute it subject to the terms and conditions
- * of the GNU Lesser General Public License, v. 2.1.
- * This program is distributed in the hope that it will be useful, but WITHOUT A
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
- * PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
- * You should have received a copy of the GNU Lesser General Public License,
- * v.2.1 along with this distribution; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA  02110-1301, USA.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package org.jboss.as.controller.client.impl;
 
@@ -50,7 +47,6 @@ import org.jboss.threads.AsyncFuture;
 import static org.jboss.as.controller.client.helpers.ClientConstants.ATTACHED_STREAMS;
 import static org.jboss.as.controller.client.helpers.ClientConstants.RESPONSE_HEADERS;
 import static org.jboss.as.protocol.mgmt.ProtocolUtils.expectHeader;
-
 
 /**
  * @author <a href="kabir.khan@jboss.com">Kabir Khan</a>
@@ -245,7 +241,6 @@ public abstract class AbstractModelControllerClient implements ModelControllerCl
             handler.handleReport(severity, message);
         }
 
-
     }
 
     static class OperationExecutionContext implements ActiveOperation.CompletedCallback<OperationResponse> {
@@ -316,8 +311,8 @@ public abstract class AbstractModelControllerClient implements ModelControllerCl
     }
 
     /**
-     * Wraps the request execution AsyncFuture in an AsyncFuture impl that handles cancellation by sending a
-     * cancellation request to the remote side.
+     * Wraps the request execution AsyncFuture in an AsyncFuture impl that handles cancellation by sending a cancellation
+     * request to the remote side.
      */
     private class DelegatingCancellableAsyncFuture extends AbstractDelegatingAsyncFuture<OperationResponse> {
 
@@ -385,8 +380,8 @@ public abstract class AbstractModelControllerClient implements ModelControllerCl
             throws IOException {
         final ModelNode streamHeader = simpleResponse.hasDefined(RESPONSE_HEADERS) && simpleResponse.get(
                 RESPONSE_HEADERS).hasDefined(ATTACHED_STREAMS)
-                ? simpleResponse.get(RESPONSE_HEADERS, ATTACHED_STREAMS)
-                : null;
+                        ? simpleResponse.get(RESPONSE_HEADERS, ATTACHED_STREAMS)
+                        : null;
         if (streamHeader != null && streamHeader.asInt() > 0) {
             return OperationResponseProxy.create(simpleResponse, getChannelAssociation(), batchId, streamHeader);
         } else {

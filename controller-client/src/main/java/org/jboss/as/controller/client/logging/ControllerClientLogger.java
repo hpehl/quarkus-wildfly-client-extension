@@ -1,25 +1,18 @@
 /*
- * JBoss, Home of Professional Open Source.
- * Copyright 2011, Red Hat, Inc., and individual contributors
- * as indicated by the @author tags. See the copyright.txt file in the
- * distribution for a full listing of individual contributors.
+ *  Copyright 2022 Red Hat
  *
- * This is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2.1 of
- * the License, or (at your option) any later version.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this software; if not, write to the Free
- * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
-
 package org.jboss.as.controller.client.logging;
 
 import java.io.IOException;
@@ -57,8 +50,7 @@ public interface ControllerClientLogger extends BasicLogger {
     IllegalStateException cannotAddDeploymentAction();
 
     /**
-     * Creates an exception indicating no deployment actions can be added after starting the creation of the rollout
-     * plan.
+     * Creates an exception indicating no deployment actions can be added after starting the creation of the rollout plan.
      *
      * @return an {@link IllegalStateException} for the error.
      */
@@ -68,7 +60,7 @@ public interface ControllerClientLogger extends BasicLogger {
     /**
      * A message indicating that {@code first} cannot be converted to {@code second}.
      *
-     * @param first  the type that could not be converted.
+     * @param first the type that could not be converted.
      * @param second the type attempting to be converted to.
      * @return the message.
      */
@@ -85,21 +77,20 @@ public interface ControllerClientLogger extends BasicLogger {
     IllegalArgumentException cannotDeriveDeploymentName(URL url);
 
     /**
-     * Creates an exception indicating the {@code DeploymentPlan} cannot be used because it was not created by this
-     * manager.
+     * Creates an exception indicating the {@code DeploymentPlan} cannot be used because it was not created by this manager.
      *
      * @return an {@link IllegalArgumentException} for the error.
      */
     @Message(id = 5, value = "Cannot use a DeploymentPlan not created by this manager")
     IllegalArgumentException cannotUseDeploymentPlan();
 
-    //    /**
-    //     * Creates an exception indicating the channel is closed.
-    //     *
-    //     * @return an {@link IOException} for the error.
-    //     */
-    //    @Message(id = 6, value = "Channel closed")
-    //    IOException channelClosed(@Cause IOException cause);
+    // /**
+    // * Creates an exception indicating the channel is closed.
+    // *
+    // * @return an {@link IOException} for the error.
+    // */
+    // @Message(id = 6, value = "Channel closed")
+    // IOException channelClosed(@Cause IOException cause);
 
     /**
      * A message indicating a deployment with the {@code name} is already present in the domain.
@@ -140,10 +131,11 @@ public interface ControllerClientLogger extends BasicLogger {
      * A message indicating only one version of a deployment with a given unique name can exist in the domain.
      *
      * @param deploymentName the deployment name.
-     * @param missingGroups  the missing groups.
+     * @param missingGroups the missing groups.
      * @return the message.
      */
-    @Message(id = 11, value = "Only one version of deployment with a given unique name can exist in the domain. The deployment " +
+    @Message(id = 11, value = "Only one version of deployment with a given unique name can exist in the domain. The deployment "
+            +
             "plan specified that a new version of deployment %s replace an existing deployment with the same unique " +
             "name, but did not apply the replacement to all server groups. Missing server groups were: %s")
     String incompleteDeploymentReplace(String deploymentName, String missingGroups);
@@ -152,7 +144,7 @@ public interface ControllerClientLogger extends BasicLogger {
      * Creates an exception indicating the URL is not a valid URI.
      *
      * @param cause the cause of the error.
-     * @param url   the URL.
+     * @param url the URL.
      * @return an {@link IllegalArgumentException} for the error.
      */
     @Message(id = 14, value = "%s is not a valid URI")
@@ -161,8 +153,8 @@ public interface ControllerClientLogger extends BasicLogger {
     /**
      * Creates an exception indicating the value is invalid and must be greater than the {@code minValue}.
      *
-     * @param name     the name for the value.
-     * @param value    the invalid value.
+     * @param name the name for the value.
+     * @param value the invalid value.
      * @param minValue the minimum value allowed.
      * @return an {@link IllegalArgumentException} for the error.
      */
@@ -170,11 +162,11 @@ public interface ControllerClientLogger extends BasicLogger {
     IllegalArgumentException invalidValue(String name, int value, int minValue);
 
     /**
-     * Creates an exception indicating the value is invalid and must be greater than the {@code minValue} and less than
-     * the {@code maxValue}.
+     * Creates an exception indicating the value is invalid and must be greater than the {@code minValue} and less than the
+     * {@code maxValue}.
      *
-     * @param name     the name for the value.
-     * @param value    the invalid value.
+     * @param name the name for the value.
+     * @param value the invalid value.
      * @param minValue the minimum value allowed.
      * @param maxValue the maximum value allowed
      * @return an {@link IllegalArgumentException} for the error.
@@ -183,23 +175,22 @@ public interface ControllerClientLogger extends BasicLogger {
     IllegalArgumentException invalidValue(String name, int value, int minValue, int maxValue);
 
     /**
-     * Creates an exception indicating that screen real estate is expensive and displayUnits must be 5 characters or
-     * less.
+     * Creates an exception indicating that screen real estate is expensive and displayUnits must be 5 characters or less.
      *
      * @return a {@link RuntimeException} for the error.
      */
     @Message(id = 17, value = "Screen real estate is expensive; displayUnits must be 5 characters or less")
     RuntimeException maxDisplayUnitLength();
 
-    //    /**
-    //     * Creates an exception indicating no active request found for the batch id.
-    //     *
-    //     * @param batchId the batch id.
-    //     *
-    //     * @return an {@link IOException} for the error.
-    //     */
-    //    @Message(id = 18, value = "No active request found for %d")
-    //    IOException noActiveRequest(int batchId);
+    // /**
+    // * Creates an exception indicating no active request found for the batch id.
+    // *
+    // * @param batchId the batch id.
+    // *
+    // * @return an {@link IOException} for the error.
+    // */
+    // @Message(id = 18, value = "No active request found for %d")
+    // IOException noActiveRequest(int batchId);
 
     /**
      * A message indicating that no failure details were provided.
@@ -266,8 +257,7 @@ public interface ControllerClientLogger extends BasicLogger {
     IllegalStateException unknownActionType(Object type);
 
     /**
-     * Creates a leak description, used in the controller client to show the original allocation point creating the
-     * client.
+     * Creates a leak description, used in the controller client to show the original allocation point creating the client.
      *
      * @return the leak description
      */

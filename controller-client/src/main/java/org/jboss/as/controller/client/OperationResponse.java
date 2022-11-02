@@ -1,25 +1,18 @@
 /*
- * JBoss, Home of Professional Open Source.
- * Copyright 2014, Red Hat, Inc., and individual contributors
- * as indicated by the @author tags. See the copyright.txt file in the
- * distribution for a full listing of individual contributors.
+ *  Copyright 2022 Red Hat
  *
- * This is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2.1 of
- * the License, or (at your option) any later version.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this software; if not, write to the Free
- * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
-
 package org.jboss.as.controller.client;
 
 import java.io.Closeable;
@@ -31,20 +24,20 @@ import java.util.List;
 import org.jboss.dmr.ModelNode;
 
 /**
- * A response to a management request, incorporating a {@link org.jboss.dmr.ModelNode} containing the detyped response,
- * along with zero or more input streams that may have been associated with the response.
+ * A response to a management request, incorporating a {@link org.jboss.dmr.ModelNode} containing the detyped response, along
+ * with zero or more input streams that may have been associated with the response.
  * <p>
- * <strong>Streams must be consumed promptly once a response is obtained.</strong>  To prevent
- * resource leaks, the server side will close its side of the stream approximately 30 seconds after the latter of its
- * transmittal of the {@code OperationResponse} or any remote read of one of its associated streams.
+ * <strong>Streams must be consumed promptly once a response is obtained.</strong> To prevent resource leaks, the server side
+ * will close its side of the stream approximately 30 seconds after the latter of its transmittal of the
+ * {@code OperationResponse} or any remote read of one of its associated streams.
  *
  * @author Brian Stansberry (c) 2014 Red Hat Inc.
  */
 public interface OperationResponse extends Closeable {
 
     /**
-     * An additional stream, besides the normal {@link #getResponseNode() response ModelNode} that is associated with
-     * the response.
+     * An additional stream, besides the normal {@link #getResponseNode() response ModelNode} that is associated with the
+     * response.
      */
     interface StreamEntry extends Closeable {
 
@@ -84,10 +77,10 @@ public interface OperationResponse extends Closeable {
     ModelNode getResponseNode();
 
     /**
-     * Gets any streams that were associated with the operation response. Streams will be in the order in which they
-     * were attached, but callers should exercise caution when making assumptions about that order if the operation
-     * executes across multiple servers in a managed domain. Aspects of domain execution often occur concurrently so
-     * streams may not be associated with the response in the order in which steps are listed in a multistep operation.
+     * Gets any streams that were associated with the operation response. Streams will be in the order in which they were
+     * attached, but callers should exercise caution when making assumptions about that order if the operation executes across
+     * multiple servers in a managed domain. Aspects of domain execution often occur concurrently so streams may not be
+     * associated with the response in the order in which steps are listed in a multistep operation.
      * <p>
      *
      * @return the streams. Will not be {@code null} but may be empty
@@ -95,11 +88,11 @@ public interface OperationResponse extends Closeable {
     List<StreamEntry> getInputStreams();
 
     /**
-     * Gets a stream associated with the response that has the given {@link org.jboss.as.controller.client.OperationResponse.StreamEntry#getUUID()
-     * uuid}.
+     * Gets a stream associated with the response that has the given
+     * {@link org.jboss.as.controller.client.OperationResponse.StreamEntry#getUUID() uuid}.
      * <p>
-     * Server side operation step handlers that associate a stream with a response should provide the stream's uuid as
-     * the step's {@code result} value in the {@link #getResponseNode() DMR response}.
+     * Server side operation step handlers that associate a stream with a response should provide the stream's uuid as the
+     * step's {@code result} value in the {@link #getResponseNode() DMR response}.
      *
      * @param uuid the uuid. Cannot be {@code null}
      * @return the stream entry, or {@code null} if no entry with the given uuid is associated

@@ -1,25 +1,18 @@
 /*
- * JBoss, Home of Professional Open Source.
- * Copyright 2011, Red Hat, Inc., and individual contributors
- * as indicated by the @author tags. See the copyright.txt file in the
- * distribution for a full listing of individual contributors.
+ *  Copyright 2022 Red Hat
  *
- * This is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2.1 of
- * the License, or (at your option) any later version.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this software; if not, write to the Free
- * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
-
 package org.jboss.as.controller.client;
 
 import java.io.Closeable;
@@ -54,8 +47,8 @@ public interface ModelControllerClient extends Closeable {
     /**
      * Execute an operation synchronously.
      * <p>
-     * Note that associated input-streams have to be closed by the caller, after the operation completed {@link
-     * OperationAttachments#isAutoCloseStreams()}.
+     * Note that associated input-streams have to be closed by the caller, after the operation completed
+     * {@link OperationAttachments#isAutoCloseStreams()}.
      *
      * @param operation the operation to execute
      * @return the result of the operation
@@ -68,7 +61,7 @@ public interface ModelControllerClient extends Closeable {
     /**
      * Execute an operation synchronously, optionally receiving progress reports.
      *
-     * @param operation      the operation to execute
+     * @param operation the operation to execute
      * @param messageHandler the message handler to use for operation progress reporting, or {@code null} for none
      * @return the result of the operation
      * @throws IOException if an I/O error occurs while executing the operation
@@ -80,10 +73,10 @@ public interface ModelControllerClient extends Closeable {
     /**
      * Execute an operation synchronously, optionally receiving progress reports.
      * <p>
-     * Note that associated input-streams have to be closed by the caller, after the operation completed {@link
-     * OperationAttachments#isAutoCloseStreams()}.
+     * Note that associated input-streams have to be closed by the caller, after the operation completed
+     * {@link OperationAttachments#isAutoCloseStreams()}.
      *
-     * @param operation      the operation to execute
+     * @param operation the operation to execute
      * @param messageHandler the message handler to use for operation progress reporting, or {@code null} for none
      * @return the result of the operation
      * @throws IOException if an I/O error occurs while executing the operation
@@ -95,13 +88,13 @@ public interface ModelControllerClient extends Closeable {
     }
 
     /**
-     * Execute an operation synchronously, optionally receiving progress reports, with the response to the operation
-     * making available any input streams that the server may associate with the response.
+     * Execute an operation synchronously, optionally receiving progress reports, with the response to the operation making
+     * available any input streams that the server may associate with the response.
      * <p>
-     * Note that associated input-streams have to be closed by the caller, after the operation completed {@link
-     * OperationAttachments#isAutoCloseStreams()}.
+     * Note that associated input-streams have to be closed by the caller, after the operation completed
+     * {@link OperationAttachments#isAutoCloseStreams()}.
      *
-     * @param operation      the operation to execute
+     * @param operation the operation to execute
      * @param messageHandler the message handler to use for operation progress reporting, or {@code null} for none
      * @return the result of the operation
      * @throws IOException if an I/O error occurs while executing the operation
@@ -115,7 +108,7 @@ public interface ModelControllerClient extends Closeable {
          * Create a client instance for a remote address and port.
          *
          * @param address the address of the remote host
-         * @param port    the port
+         * @param port the port
          * @return A model controller client
          */
         public static ModelControllerClient create(final InetAddress address, final int port) {
@@ -128,10 +121,10 @@ public interface ModelControllerClient extends Closeable {
         /**
          * Create a client instance for a remote address and port.
          *
-         * @param protocol The prototcol to use. If this is remote+http or remote+https http upgrade will be used rather
-         *                 than the native remote protocol
-         * @param address  the address of the remote host
-         * @param port     the port
+         * @param protocol The prototcol to use. If this is remote+http or remote+https http upgrade will be used rather than
+         *        the native remote protocol
+         * @param address the address of the remote host
+         * @param port the port
          * @return A model controller client
          */
         public static ModelControllerClient create(final String protocol, final InetAddress address, final int port) {
@@ -146,7 +139,7 @@ public interface ModelControllerClient extends Closeable {
          * Create a client instance for a remote address and port.
          *
          * @param address the address of the remote host
-         * @param port    the port
+         * @param port the port
          * @param handler CallbackHandler to obtain authentication information for the call.
          * @return A model controller client
          */
@@ -162,11 +155,11 @@ public interface ModelControllerClient extends Closeable {
         /**
          * Create a client instance for a remote address and port.
          *
-         * @param protocol The prototcol to use. If this is remote+http or remote+https http upgrade will be used rather
-         *                 than the native remote protocol
-         * @param address  the address of the remote host
-         * @param port     the port
-         * @param handler  CallbackHandler to obtain authentication information for the call.
+         * @param protocol The prototcol to use. If this is remote+http or remote+https http upgrade will be used rather than
+         *        the native remote protocol
+         * @param address the address of the remote host
+         * @param port the port
+         * @param handler CallbackHandler to obtain authentication information for the call.
          * @return A model controller client
          */
         public static ModelControllerClient create(final String protocol, final InetAddress address, final int port,
@@ -183,7 +176,7 @@ public interface ModelControllerClient extends Closeable {
          * Create a client instance for a remote address and port.
          *
          * @param hostName the remote host
-         * @param port     the port
+         * @param port the port
          * @return A model controller client
          */
         public static ModelControllerClient create(final String hostName, final int port) {
@@ -196,10 +189,10 @@ public interface ModelControllerClient extends Closeable {
         /**
          * Create a client instance for a remote address and port.
          *
-         * @param protocol The prototcol to use. If this is remote+http or remote+https http upgrade will be used rather
-         *                 than the native remote protocol
+         * @param protocol The prototcol to use. If this is remote+http or remote+https http upgrade will be used rather than
+         *        the native remote protocol
          * @param hostName the remote host
-         * @param port     the port
+         * @param port the port
          * @return A model controller client
          */
         public static ModelControllerClient create(final String protocol, final String hostName, final int port) {
@@ -214,8 +207,8 @@ public interface ModelControllerClient extends Closeable {
          * Create a client instance for a remote address and port and CallbackHandler.
          *
          * @param hostName the remote host
-         * @param port     the port
-         * @param handler  CallbackHandler to obtain authentication information for the call.
+         * @param port the port
+         * @param handler CallbackHandler to obtain authentication information for the call.
          * @return A model controller client
          */
         public static ModelControllerClient create(final String hostName, final int port,
@@ -230,11 +223,11 @@ public interface ModelControllerClient extends Closeable {
         /**
          * Create a client instance for a remote address and port and CallbackHandler.
          *
-         * @param protocol The prototcol to use. If this is remote+http or remote+https http upgrade will be used rather
-         *                 than the native remote protocol
+         * @param protocol The prototcol to use. If this is remote+http or remote+https http upgrade will be used rather than
+         *        the native remote protocol
          * @param hostName the remote host
-         * @param port     the port
-         * @param handler  CallbackHandler to obtain authentication information for the call.
+         * @param port the port
+         * @param handler CallbackHandler to obtain authentication information for the call.
          * @return A model controller client
          */
         public static ModelControllerClient create(final String protocol, final String hostName, final int port,

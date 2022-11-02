@@ -1,25 +1,18 @@
 /*
- * JBoss, Home of Professional Open Source.
- * Copyright 2013, Red Hat, Inc., and individual contributors
- * as indicated by the @author tags. See the copyright.txt file in the
- * distribution for a full listing of individual contributors.
+ *  Copyright 2022 Red Hat
  *
- * This is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2.1 of
- * the License, or (at your option) any later version.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this software; if not, write to the Free
- * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
-
 package org.jboss.as.controller.client.helpers;
 
 import java.io.File;
@@ -35,10 +28,11 @@ import org.jboss.dmr.ModelType;
 import static org.jboss.as.controller.client.helpers.ClientConstants.*;
 
 /**
- * A helper class for various operation tasks. Includes helpers to create standard operations, check whether the
- * operation was executed successfully, get the failure description if unsuccessful, etc.
+ * A helper class for various operation tasks. Includes helpers to create standard operations, check whether the operation was
+ * executed successfully, get the failure description if unsuccessful, etc.
  * <p/>
  * <b>Example:</b> Read the server state
+ *
  * <pre>
  *     <code>
  *
@@ -87,11 +81,11 @@ public class Operations {
     }
 
     /**
-     * Creates an {@linkplain ModelNode address} that can be used as the address for an operation. The address is simply
-     * a {@link ModelNode} of type {@link ModelType#LIST}.
+     * Creates an {@linkplain ModelNode address} that can be used as the address for an operation. The address is simply a
+     * {@link ModelNode} of type {@link ModelType#LIST}.
      * <p>
-     * The string is split into key/value pairs. If the final key does not have a value an {@code *} is used to indicate
-     * a  wildcard for the address.
+     * The string is split into key/value pairs. If the final key does not have a value an {@code *} is used to indicate a
+     * wildcard for the address.
      * </p>
      *
      * @param pairs the key/value pairs to use
@@ -102,11 +96,11 @@ public class Operations {
     }
 
     /**
-     * Creates an {@linkplain ModelNode address} that can be used as the address for an operation. The address is simply
-     * a {@link ModelNode} of type {@link ModelType#LIST}.
+     * Creates an {@linkplain ModelNode address} that can be used as the address for an operation. The address is simply a
+     * {@link ModelNode} of type {@link ModelType#LIST}.
      * <p>
-     * The string is split into key/value pairs. If the final key does not have a value an {@code *} is used to indicate
-     * a  wildcard for the address.
+     * The string is split into key/value pairs. If the final key does not have a value an {@code *} is used to indicate a
+     * wildcard for the address.
      * </p>
      *
      * @param pairs the key/value pairs to use
@@ -170,8 +164,8 @@ public class Operations {
     /**
      * Creates a composite operation with an empty address and empty steps that will rollback on a runtime failure.
      * <p/>
-     * By default the {@link ClientConstants#ROLLBACK_ON_RUNTIME_FAILURE} is set to {@code true} to rollback all
-     * operations if one fails.
+     * By default the {@link ClientConstants#ROLLBACK_ON_RUNTIME_FAILURE} is set to {@code true} to rollback all operations if
+     * one fails.
      *
      * @return the operation
      */
@@ -185,7 +179,7 @@ public class Operations {
     /**
      * Creates an operation to read the attribute represented by the {@code attributeName} parameter.
      *
-     * @param address       the address to create the read attribute for
+     * @param address the address to create the read attribute for
      * @param attributeName the name of the parameter to read
      * @return the operation
      */
@@ -208,7 +202,7 @@ public class Operations {
     /**
      * Creates an operation to read a resource.
      *
-     * @param address   the address to create the read for
+     * @param address the address to create the read for
      * @param recursive whether to search recursively or not
      * @return the operation
      */
@@ -221,7 +215,7 @@ public class Operations {
     /**
      * Creates an operation to undefine an attribute value represented by the {@code attributeName} parameter.
      *
-     * @param address       the address to create the write attribute for
+     * @param address the address to create the write attribute for
      * @param attributeName the name attribute to undefine
      * @return the operation
      */
@@ -234,9 +228,9 @@ public class Operations {
     /**
      * Creates an operation to write an attribute value represented by the {@code attributeName} parameter.
      *
-     * @param address       the address to create the write attribute for
+     * @param address the address to create the write attribute for
      * @param attributeName the name of the attribute to write
-     * @param value         the value to set the attribute to
+     * @param value the value to set the attribute to
      * @return the operation
      */
     public static ModelNode createWriteAttributeOperation(final ModelNode address, final String attributeName,
@@ -249,9 +243,9 @@ public class Operations {
     /**
      * Creates an operation to write an attribute value represented by the {@code attributeName} parameter.
      *
-     * @param address       the address to create the write attribute for
+     * @param address the address to create the write attribute for
      * @param attributeName the name of the attribute to write
-     * @param value         the value to set the attribute to
+     * @param value the value to set the attribute to
      * @return the operation
      */
     public static ModelNode createWriteAttributeOperation(final ModelNode address, final String attributeName,
@@ -264,9 +258,9 @@ public class Operations {
     /**
      * Creates an operation to write an attribute value represented by the {@code attributeName} parameter.
      *
-     * @param address       the address to create the write attribute for
+     * @param address the address to create the write attribute for
      * @param attributeName the name of the attribute to write
-     * @param value         the value to set the attribute to
+     * @param value the value to set the attribute to
      * @return the operation
      */
     public static ModelNode createWriteAttributeOperation(final ModelNode address, final String attributeName,
@@ -279,9 +273,9 @@ public class Operations {
     /**
      * Creates an operation to write an attribute value represented by the {@code attributeName} parameter.
      *
-     * @param address       the address to create the write attribute for
+     * @param address the address to create the write attribute for
      * @param attributeName the name of the attribute to write
-     * @param value         the value to set the attribute to
+     * @param value the value to set the attribute to
      * @return the operation
      */
     public static ModelNode createWriteAttributeOperation(final ModelNode address, final String attributeName,
@@ -294,9 +288,9 @@ public class Operations {
     /**
      * Creates an operation to write an attribute value represented by the {@code attributeName} parameter.
      *
-     * @param address       the address to create the write attribute for
+     * @param address the address to create the write attribute for
      * @param attributeName the name of the attribute to write
-     * @param value         the value to set the attribute to
+     * @param value the value to set the attribute to
      * @return the operation
      */
     public static ModelNode createWriteAttributeOperation(final ModelNode address, final String attributeName,
@@ -323,7 +317,7 @@ public class Operations {
      * Creates an operation.
      *
      * @param operation the operation name
-     * @param address   the address for the operation
+     * @param address the address for the operation
      * @return the operation
      * @throws IllegalArgumentException if the address is not of type {@link org.jboss.dmr.ModelType#LIST}
      */
@@ -337,8 +331,8 @@ public class Operations {
     }
 
     /**
-     * Reads the result of an operation and returns the result. If the operation does not have a {@link
-     * ClientConstants#RESULT} attribute, a new undefined {@link org.jboss.dmr.ModelNode} is returned.
+     * Reads the result of an operation and returns the result. If the operation does not have a {@link ClientConstants#RESULT}
+     * attribute, a new undefined {@link org.jboss.dmr.ModelNode} is returned.
      *
      * @param result the result of executing an operation
      * @return the result of the operation or a new undefined model node
@@ -395,8 +389,8 @@ public class Operations {
         /**
          * Adds a new operation to the composite operation.
          * <p/>
-         * Note that subsequent calls after a {@link #build() build} invocation will result the operation being appended
-         * to and could result in unexpected behaviour.
+         * Note that subsequent calls after a {@link #build() build} invocation will result the operation being appended to and
+         * could result in unexpected behaviour.
          *
          * @param op the operation to add
          * @return the current builder

@@ -1,23 +1,17 @@
 /*
- * JBoss, Home of Professional Open Source.
- * Copyright 2006, Red Hat Middleware LLC, and individual contributors
- * as indicated by the @author tags. See the copyright.txt file in the
- * distribution for a full listing of individual contributors.
+ *  Copyright 2022 Red Hat
  *
- * This is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2.1 of
- * the License, or (at your option) any later version.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this software; if not, write to the Free
- * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package org.jboss.as.controller.client.impl;
 
@@ -36,7 +30,7 @@ public interface ModelControllerProtocol {
     byte CANCEL_ASYNC_REQUEST = 0x4D;
     byte COMPLETE_TX_REQUEST = 0x4E;
     // This was never used in a .Final release, so byte can be re-used
-    //byte GET_SUBJECT_REQUEST = 0x4F;
+    // byte GET_SUBJECT_REQUEST = 0x4F;
     byte GET_CHUNKED_INPUTSTREAM_REQUEST = 0x4F;
 
     // This was never used in a .Final release before WF 9, so it's repurposed now
@@ -50,7 +44,7 @@ public interface ModelControllerProtocol {
     byte PARAM_INPUTSTREAM_LENGTH = 0x67;
     byte PARAM_INPUTSTREAM_CONTENTS = 0x68;
     // This was never used in a .Final release, so byte can be re-used
-    //byte PARAM_PREPARED = 0x69;
+    // byte PARAM_PREPARED = 0x69;
     byte PARAM_COMMIT = 0x70;
     byte PARAM_ROLLBACK = 0x71;
     // The tx response params

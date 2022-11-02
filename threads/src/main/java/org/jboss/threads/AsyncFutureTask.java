@@ -1,19 +1,17 @@
 /*
- * JBoss, Home of Professional Open Source.
- * Copyright 2017 Red Hat, Inc., and individual contributors
- * as indicated by the @author tags.
+ *  Copyright 2022 Red Hat
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package org.jboss.threads;
 
@@ -26,9 +24,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
- * A base class for implementing asynchronous tasks.  This class implements {@link java.util.concurrent.Future Future}
- * as well as {@link AsyncFuture}, and is approximately equivalent to {@link java.util.concurrent.FutureTask}, however
- * it does not implement {@link Runnable} and is somewhat more flexible.
+ * A base class for implementing asynchronous tasks. This class implements {@link java.util.concurrent.Future Future} as well as
+ * {@link AsyncFuture}, and is approximately equivalent to {@link java.util.concurrent.FutureTask}, however it does not
+ * implement {@link Runnable} and is somewhat more flexible.
  *
  * @author <a href="mailto:david.lloyd@redhat.com">David M. Lloyd</a>
  */
@@ -74,8 +72,8 @@ public abstract class AsyncFutureTask<T> implements AsyncFuture<T> {
     }
 
     /**
-     * Set the successful result of this operation.  Once a result is set, calls to this or the other {@code set*()}
-     * methods are ignored.
+     * Set the successful result of this operation. Once a result is set, calls to this or the other {@code set*()} methods are
+     * ignored.
      *
      * @param result the result
      * @return {@code true} if the result was successfully set, or {@code false} if a result was already set
@@ -102,8 +100,8 @@ public abstract class AsyncFutureTask<T> implements AsyncFuture<T> {
     }
 
     /**
-     * Set the cancelled result of this operation.  Once a result is set, calls to this or the other {@code set*()}
-     * methods are ignored.
+     * Set the cancelled result of this operation. Once a result is set, calls to this or the other {@code set*()} methods are
+     * ignored.
      *
      * @return {@code true} if the result was successfully set, or {@code false} if a result was already set
      */
@@ -128,8 +126,8 @@ public abstract class AsyncFutureTask<T> implements AsyncFuture<T> {
     }
 
     /**
-     * Set the failure result of this operation.  Once a result is set, calls to this or the other {@code set*()}
-     * methods are ignored.
+     * Set the failure result of this operation. Once a result is set, calls to this or the other {@code set*()} methods are
+     * ignored.
      *
      * @param cause the cause of failure
      * @return {@code true} if the result was successfully set, or {@code false} if a result was already set
@@ -164,11 +162,10 @@ public abstract class AsyncFutureTask<T> implements AsyncFuture<T> {
     }
 
     /**
-     * Cancel this task.  The default implementation of this method does nothing; if the task support asynchronous
-     * cancel, this method may be overridden to implement it.  The implementation may choose to support or disregard the
-     * {@code interruptionDesired} flag. Implementations are allowed to interrupt threads associated with tasks even if
-     * the flag is {@code false}; likewise, implementations may choose not to interrupt threads even if the flag is
-     * {@code true}.
+     * Cancel this task. The default implementation of this method does nothing; if the task support asynchronous cancel, this
+     * method may be overridden to implement it. The implementation may choose to support or disregard the
+     * {@code interruptionDesired} flag. Implementations are allowed to interrupt threads associated with tasks even if the flag
+     * is {@code false}; likewise, implementations may choose not to interrupt threads even if the flag is {@code true}.
      *
      * @param interruptionDesired {@code true} if interruption of threads is desired
      */
@@ -191,7 +188,7 @@ public abstract class AsyncFutureTask<T> implements AsyncFuture<T> {
         long now = System.nanoTime();
         Status status;
         synchronized (this) {
-            for (; ; ) {
+            for (;;) {
                 status = this.status;
                 if (remaining <= 0L || status != Status.WAITING) {
                     return status;
@@ -231,7 +228,7 @@ public abstract class AsyncFutureTask<T> implements AsyncFuture<T> {
         boolean intr = Thread.interrupted();
         try {
             synchronized (this) {
-                for (; ; ) {
+                for (;;) {
                     status = this.status;
                     if (remaining <= 0L || status != Status.WAITING) {
                         return status;
@@ -252,7 +249,7 @@ public abstract class AsyncFutureTask<T> implements AsyncFuture<T> {
     }
 
     /** {@inheritDoc} */
-    @SuppressWarnings({"unchecked"})
+    @SuppressWarnings({ "unchecked" })
     public final T get() throws InterruptedException, ExecutionException {
         synchronized (AsyncFutureTask.this) {
             final Status status = await();
@@ -270,7 +267,7 @@ public abstract class AsyncFutureTask<T> implements AsyncFuture<T> {
     }
 
     /** {@inheritDoc} */
-    @SuppressWarnings({"unchecked"})
+    @SuppressWarnings({ "unchecked" })
     public final T get(final long timeout, final TimeUnit unit)
             throws InterruptedException, ExecutionException, TimeoutException {
         synchronized (AsyncFutureTask.this) {
@@ -291,7 +288,7 @@ public abstract class AsyncFutureTask<T> implements AsyncFuture<T> {
     }
 
     /** {@inheritDoc} */
-    @SuppressWarnings({"unchecked"})
+    @SuppressWarnings({ "unchecked" })
     public final T getUninterruptibly() throws CancellationException, ExecutionException {
         synchronized (AsyncFutureTask.this) {
             final Status status = awaitUninterruptibly();
@@ -309,7 +306,7 @@ public abstract class AsyncFutureTask<T> implements AsyncFuture<T> {
     }
 
     /** {@inheritDoc} */
-    @SuppressWarnings({"unchecked"})
+    @SuppressWarnings({ "unchecked" })
     public final T getUninterruptibly(final long timeout, final TimeUnit unit)
             throws CancellationException, ExecutionException, TimeoutException {
         synchronized (AsyncFutureTask.this) {
