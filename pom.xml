@@ -28,7 +28,7 @@
 
     <groupId>org.wildfly.quarkus</groupId>
     <artifactId>quarkus-wildfly-client-parent</artifactId>
-    <version>0.0.1.Final</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WildFly Client Extension :: Parent</name>
     <url>https://github.com/hpehl/quarkus-wildfly-client-extension</url>
