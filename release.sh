@@ -121,7 +121,7 @@ FINAL_VERSION="${RELEASE_VERSION}.Final"
 GIT_REMOTES=("origin" "upstream")
 SNAPSHOT_VERSION="${NEXT_VERSION}-SNAPSHOT"
 TAG="v${RELEASE_VERSION}"
-WORKFLOW_URL="https://github.com/wildfly-extras/wildfly-grpc-feature-pack/actions/workflows/release.yml"
+WORKFLOW_URL="https://github.com/hpehl/quarkus-wildfly-client-extension/actions/workflows/release.yml"
 
 is_semver "${RELEASE_VERSION}" || die "Release version is not a semantic version"
 is_semver "${NEXT_VERSION}" || die "Next version is not a semantic version"
