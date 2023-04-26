@@ -15,11 +15,11 @@
  */
 package org.wildfly.quarkus.runtime;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
-import javax.inject.Singleton;
-
 import org.jboss.as.controller.client.ModelControllerClient;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Singleton;
 
 @ApplicationScoped
 public class ModelControllerClientProducer {
