@@ -61,7 +61,7 @@ public class ModelControllerClientRecorder {
                     }
                 }
             });
-            ModelControllerClientProducer producer = container.instance(ModelControllerClientProducer.class);
+            ModelControllerClientProducer producer = container.beanInstance(ModelControllerClientProducer.class);
             producer.initialize(client);
             shutdown.addShutdownTask(this::close);
         } catch (UnknownHostException e) {
