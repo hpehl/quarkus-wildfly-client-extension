@@ -78,7 +78,7 @@
         <!-- dependencies -->
         <version.checkstyle.config>1.0.8.Final</version.checkstyle.config>
         <version.jboss.dmr>1.7.0.Final</version.jboss.dmr>
-        <version.jboss.logging-annotations>3.0.2.Final</version.jboss.logging-annotations>
+        <version.jboss.logging-annotations>3.0.3.Final</version.jboss.logging-annotations>
         <version.jboss.remoting>5.0.30.Final</version.jboss.remoting>
         <version.jboss.xnio>3.8.16.Final</version.jboss.xnio>
         <version.quarkus>3.16.4</version.quarkus>
