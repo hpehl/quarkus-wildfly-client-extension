@@ -81,7 +81,7 @@
         <version.jboss.logging-annotations>3.0.4.Final</version.jboss.logging-annotations>
         <version.jboss.remoting>5.0.31.Final</version.jboss.remoting>
         <version.jboss.xnio>3.8.16.Final</version.jboss.xnio>
-        <version.quarkus>3.25.0</version.quarkus>
+        <version.quarkus>3.25.1</version.quarkus>
         <version.wildfly.client.config>1.0.1.Final</version.wildfly.client.config>
         <version.wildfly.common>1.6.0.Final</version.wildfly.common>
         <version.wildfly.controller.client>19.0.0.Final</version.wildfly.controller.client>
